@@ -13,22 +13,20 @@ class Solution {
 public:
     TreeNode* constructBST(TreeNode* root,int val){
         TreeNode* newNode = new TreeNode(val);
-        if(root == NULL){
+        if(root==NULL){
             return newNode;
         }
-        else if(val>root->val){
-                root->right = constructBST(root->right,val);
+        if(root->val>val){
+            root->left = constructBST(root->left,val);
         }
-        else{
-                root->left =  constructBST(root->left,val);
-        }
+        else root->right = constructBST(root->right,val);
         return root;
     }
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-        TreeNode * root = NULL;
-       for(auto ele : preorder){
-            root = constructBST(root,ele);
-       }
-       return root;
+        TreeNode* root = NULL;
+        for(auto x: preorder){
+            root = constructBST(root,x);
+        }
+        return root;
     }
 };
