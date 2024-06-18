@@ -11,16 +11,12 @@
  */
 class Solution {
 public:
-    TreeNode* search(TreeNode* root, int val){
-        if(root==NULL) return NULL;
-        if(root->val==val) return root;
-        else if(val<root->val) return search(root->left,val);
-        else return search(root->right,val);
-        return root;
-    }
     TreeNode* searchBST(TreeNode* root, int val) {
-        TreeNode* node = NULL;
-        node = search(root,val);
-        return node;
+        if(root==NULL) return NULL;
+        if(root->val == val) return root;
+        if(root->val>val){
+            return searchBST(root->left,val);
+        }
+        return searchBST(root->right,val);
     }
 };
