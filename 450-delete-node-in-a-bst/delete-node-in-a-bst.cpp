@@ -11,48 +11,31 @@
  */
 class Solution {
 public:
-   TreeNode* par=NULL;
 void solve(TreeNode *&root, int key)
 {
-    if (root == NULL)
-        return;
-    if (root->val > key) {solve(root->left, key);}
-    else if (root->val < key) {solve(root->right, key);}
+    if (root == NULL) return;
+    if (root->val > key) solve(root->left, key);
+    else if (root->val < key) solve(root->right, key);
     else if (root->val == key)
     {
-        if (root->left == NULL && root->right == NULL)
+        if (root->left == NULL && root->right == NULL) root = NULL;
+        else if ((root->left == NULL && root->right != NULL) || (root->right ==NULL && root->left != NULL))
         {
-            root = NULL;
-            return;
-        }
-        else if ((root->left == NULL && root->right != NULL) || (root->right ==             NULL && root->left != NULL))
-        {
-            if (root->left == NULL)
-            {
-                root = root->right;
-                cout << "meo";
-            }
-            else
-            {
-                root = root->left;
-                cout << "left" << root->val;
-            }
-            return;
+            if (root->left == NULL) root = root->right; 
+            else root = root->left;
         }
         else if(root->left!=NULL&&root->right!=NULL){
-            cout<<root->val<<endl;
             TreeNode *keyNode = root->right;
+            TreeNode* par = NULL;
             while (keyNode->left != NULL)
             {
                 par=keyNode;
                 keyNode = keyNode->left;
             }
             root->val = keyNode->val;
-            //cout<<par->val<<endl;
             if(root->right==keyNode)
             {
                 root->right=keyNode->right;
-                //root->right=NULL;
             }
             else
             {
