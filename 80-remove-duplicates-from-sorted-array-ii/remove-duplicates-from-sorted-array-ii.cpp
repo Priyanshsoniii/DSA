@@ -6,7 +6,6 @@ public:
        int eleFreq = 1;
        int flag = -1;
        int cnt = 1;
-         cout<<ele<<" "<<eleFreq<<" "<<cnt<<endl;
        for(int i=1;i<size;++i){
             if(nums[i]!=ele){
                 if(flag!=-1){
@@ -38,8 +37,6 @@ public:
                     
                 }
             }
-
-            cout<<ele<<" "<<eleFreq<<" "<<cnt<<endl;
        }
 
        return cnt;
