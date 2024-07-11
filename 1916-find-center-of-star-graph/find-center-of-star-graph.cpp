@@ -1,13 +1,12 @@
 class Solution {
 public:
     int findCenter(vector<vector<int>>& edges) {
-        int center = -1;
         int maxEle = -1;
-        int maxFreq = -1;
+        int maxFreq = -1,a,b;
         unordered_map<int,int>mp;
         for(auto x : edges){
-            int a = x[0];
-            int b = x[1];
+            a = x[0];
+            b = x[1];
             mp[a]++;
             mp[b]++;
             if(mp[a]>maxFreq){
