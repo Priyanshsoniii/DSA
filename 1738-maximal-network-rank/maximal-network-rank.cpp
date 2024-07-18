@@ -19,7 +19,7 @@ public:
 
         int ans = 0;
         for(int i=0;i<n;++i){
-            for(int j=0;i!=j && j<n;++j){
+            for(int j=i+1; j<n;++j){
                if(gr[i][j]==1 && gr[j][i]==1)
                 ans = max(ans,freq[i]+freq[j]-1);
                 else 
