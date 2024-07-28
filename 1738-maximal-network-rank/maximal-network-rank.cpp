@@ -1,23 +1,23 @@
 class Solution {
 public:
-    int maximalNetworkRank(int n, vector<vector<int>>& roads) {   
-        unordered_map<int,int>freq;
-        vector<vector<int>>gr(n+1,vector<int>(n+1,-1));
-        for(auto road: roads){
-            freq[road[0]]++;
-            freq[road[1]]++;
-            gr[road[0]][road[1]] = 1;
-            gr[road[1]][road[0]] = 1;
+    int maximalNetworkRank(int n, vector<vector<int>>& roads) {
+        vector<vector<bool>>connected(n,vector<bool>(n,false));
+        unordered_map<int,int>deg;
+        for(auto i : roads){
+            deg[i[0]]++;
+            deg[i[1]]++;
+            connected[i[0]][i[1]]=true;
+            connected[i[1]][i[0]]=true;
         }
-        int ans = 0;
+        int maxi = INT_MIN;
         for(int i=0;i<n;++i){
-            for(int j=i+1; j<n;++j){
-               if(gr[i][j]==1 && gr[j][i]==1)
-                ans = max(ans,freq[i]+freq[j]-1);
-                else 
-                ans = max(ans,freq[i]+freq[j]);
+            for(int j=i+1;j<n;++j){
+                if(connected[i][j]==false)
+                maxi = max(maxi,deg[i]+deg[j]);
+                else
+                maxi = max(maxi,deg[i]+deg[j]-1);
             }
         }
-        return ans;
+        return maxi;
     }
 };
