@@ -24,7 +24,7 @@ public:
                     q.push(nbr);
                 }
                 else{
-                    if(parent[curNode]!=nbr && parent[nbr] != curNode){
+                    if(parent[curNode]!=nbr){
                         mini = min(mini,dist[curNode] + dist[nbr] + 1);
                     }
                     else{
