@@ -5,13 +5,11 @@ public:
             temp.push_back(nbr);
             if(nbr!=endNode){
                 dfs(nbr,endNode,graph,ans,temp);
-                temp.pop_back();
             }
             else{
               ans.push_back(temp);
-                  temp.pop_back();
             }
-            
+            temp.pop_back();
         }
     }
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
